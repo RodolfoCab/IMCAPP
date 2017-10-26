@@ -1,5 +1,7 @@
 package com.example.roxanacabmartnez.imcapp;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,11 +17,14 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-    public void Calcular (View v) {
+        android.support.v4.app.FragmentManager fm=getSupportFragmentManager();
+        android.support.v4.app.Fragment fragment=fm.findFragmentById(R.id.fragment_container);
 
-    }
-    public void Limpiar (View v){
-
+        if(fragment==null){
+            fragment = new android.support.v4.app.Fragment();
+            fm.beginTransaction()
+                    .add(R.id.fragment_container, fragment)
+                    .commit();
+        }
     }
 }
